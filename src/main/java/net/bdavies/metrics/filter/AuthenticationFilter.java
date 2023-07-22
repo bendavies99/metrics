@@ -37,6 +37,7 @@ public class AuthenticationFilter extends GenericFilterBean {
         try {
             Authentication auth = service.authenticate((HttpServletRequest) request);
             SecurityContextHolder.getContext().setAuthentication(auth);
+            chain.doFilter(request, response);
         } catch (Exception e) {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -55,6 +56,5 @@ public class AuthenticationFilter extends GenericFilterBean {
             writer.flush();
             writer.close();
         }
-        chain.doFilter(request, response);
     }
 }

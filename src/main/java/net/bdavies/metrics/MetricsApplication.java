@@ -22,7 +22,13 @@ public class MetricsApplication {
                 ApiUser user = repository.save(ApiUser.builder()
                         .username("testAccount")
                         .build());
-                log.info("Test Account API Key: {}", user.getApiKey());
+                log.info("""
+                                                
+                        ***********************************
+                        Admin Account API Key: {}
+                        SAVE THIS FOR FUTURE REFERENCE
+                        ***********************************
+                        """, user.getApiKey());
             }
         };
     }

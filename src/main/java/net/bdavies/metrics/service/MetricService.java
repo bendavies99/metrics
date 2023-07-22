@@ -7,6 +7,7 @@ import net.bdavies.metrics.repository.MetricRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -22,6 +23,10 @@ public class MetricService {
 
     public List<Metric> getAll(GetMetricsRequest req) {
         return filterByMetricsRequest(repository.findBySystem(req.getSystem()), req);
+    }
+
+    public Optional<Metric> getById(int id) {
+        return repository.findById(id);
     }
 
     private List<Metric> filterByMetricsRequest(List<Metric> metrics, GetMetricsRequest req) {

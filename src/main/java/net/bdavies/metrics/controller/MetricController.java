@@ -1,16 +1,19 @@
 package net.bdavies.metrics.controller;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import net.bdavies.metrics.dto.GetMetricsRequest;
 import net.bdavies.metrics.model.Metric;
 import net.bdavies.metrics.service.MetricService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Edit me
@@ -21,10 +24,11 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Validated
+@RequestMapping("/metrics")
 public class MetricController {
     private final MetricService service;
 
-    @GetMapping("/metrics")
+    @GetMapping("/")
     public List<Metric> metrics(
             @RequestParam("system") @NotEmpty String system,
             @RequestParam(name = "name", required = false) String name,
@@ -37,5 +41,19 @@ public class MetricController {
                 .from(from)
                 .to(to)
                 .build());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Metric> metricById(
+            @PathVariable("id") @Min(1) @Max(Integer.MAX_VALUE) int id
+    ) {
+        Optional<Metric> metric = service.getById(id);
+        return metric
+                .map(value -> ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body(value))
+                .orElseGet(() -> ResponseEntity
+                        .status(HttpStatus.NOT_FOUND)
+                        .body(null));
     }
 }

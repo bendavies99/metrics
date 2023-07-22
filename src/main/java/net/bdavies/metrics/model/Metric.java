@@ -1,8 +1,10 @@
 package net.bdavies.metrics.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Model for a Metric
@@ -18,13 +20,16 @@ import lombok.Data;
 @Entity
 @Data
 @Builder
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"system", "name", "date"}))
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "metric", uniqueConstraints = @UniqueConstraint(columnNames = {"system", "name", "date"}))
 public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final int id;
-    private final String system;
-    private final String name;
-    private final int date;
-    private final int value;
+    private int id;
+    private String system;
+    private String name;
+    private int date;
+    @Column(name = "metric_value")
+    private int value;
 }

@@ -1,6 +1,7 @@
 package net.bdavies.metrics.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.bdavies.metrics.dto.CreateMetricRequest;
 import net.bdavies.metrics.dto.GetMetricsRequest;
 import net.bdavies.metrics.dto.MetricSummary;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MetricService {
     private final MetricRepository repository;
 
@@ -49,6 +51,13 @@ public class MetricService {
     }
 
     public Metric createMetric(CreateMetricRequest req) {
+        Optional<Metric> metric = repository.findBySystemAndNameAndDate(req.getSystem(), req.getName(), req.getDate());
+
+        if (metric.isPresent()) {
+            log.info("Trying to create a metric that already exists will return the already existing metric req: {}", req);
+            return metric.get();
+        }
+
         return repository.saveAndFlush(Metric.builder()
                 .system(req.getSystem())
                 .name(req.getName())
@@ -96,5 +105,4 @@ public class MetricService {
 
         return metricsStream.collect(Collectors.toList());
     }
-
 }

@@ -1,7 +1,9 @@
 package net.bdavies.metrics.service;
 
 import lombok.RequiredArgsConstructor;
+import net.bdavies.metrics.dto.CreateMetricRequest;
 import net.bdavies.metrics.dto.GetMetricsRequest;
+import net.bdavies.metrics.dto.UpdateMetricRequest;
 import net.bdavies.metrics.model.Metric;
 import net.bdavies.metrics.repository.MetricRepository;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,38 @@ public class MetricService {
 
     public Optional<Metric> getById(int id) {
         return repository.findById(id);
+    }
+
+    public Metric createMetric(CreateMetricRequest req) {
+        return repository.saveAndFlush(Metric.builder()
+                .system(req.getSystem())
+                .name(req.getName())
+                .date(req.getDate())
+                .value(req.getValue())
+                .build());
+    }
+
+    public Optional<Metric> updateMetric(int id, UpdateMetricRequest req) {
+        Optional<Metric> metricOpt = getById(id);
+        if (metricOpt.isEmpty()) {
+            return metricOpt;
+        }
+
+        Metric metric = metricOpt.get();
+        metric.setSystem(req.getSystem());
+        metric.setName(req.getName());
+        metric.setDate(req.getDate());
+        metric.setValue(getNewMetricValue(metric.getValue(), req));
+
+        return Optional.of(repository.save(metric));
+    }
+
+    private int getNewMetricValue(int current, UpdateMetricRequest req) {
+        if (req.getValue() != null && req.getValue() != 0) {
+            return req.getValue();
+        }
+
+        return current + 1;
     }
 
     private List<Metric> filterByMetricsRequest(List<Metric> metrics, GetMetricsRequest req) {

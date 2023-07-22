@@ -18,19 +18,13 @@ import lombok.Data;
 @Entity
 @Data
 @Builder
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"system", "name", "date"}))
 public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private final int id;
-
-    @Column(unique = true)
     private final String system;
-
-    @Column(unique = true)
     private final String name;
-
-    @Column(unique = true)
     private final int date;
-
     private final int value;
 }

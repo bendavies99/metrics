@@ -3,6 +3,7 @@ package net.bdavies.metrics.service;
 import lombok.RequiredArgsConstructor;
 import net.bdavies.metrics.dto.CreateMetricRequest;
 import net.bdavies.metrics.dto.GetMetricsRequest;
+import net.bdavies.metrics.dto.MetricSummary;
 import net.bdavies.metrics.dto.UpdateMetricRequest;
 import net.bdavies.metrics.model.Metric;
 import net.bdavies.metrics.repository.MetricRepository;
@@ -25,6 +26,22 @@ public class MetricService {
 
     public List<Metric> getAll(GetMetricsRequest req) {
         return filterByMetricsRequest(repository.findBySystem(req.getSystem()), req);
+    }
+
+    public MetricSummary getMetricSummary(GetMetricsRequest req) {
+        List<Metric> metrics = getAll(req);
+        String metricNames = metrics.stream().map(Metric::getName)
+                .distinct().collect(Collectors.joining(", "));
+        int totalValue = metrics.stream().mapToInt(Metric::getValue).sum();
+        int from = metrics.stream().mapToInt(Metric::getDate).min().orElse(0);
+        int to = metrics.stream().mapToInt(Metric::getDate).max().orElse(0);
+        return MetricSummary.builder()
+                .system(req.getSystem())
+                .name(metricNames)
+                .from(from)
+                .to(to)
+                .value(totalValue)
+                .build();
     }
 
     public Optional<Metric> getById(int id) {
@@ -79,4 +96,5 @@ public class MetricService {
 
         return metricsStream.collect(Collectors.toList());
     }
+
 }

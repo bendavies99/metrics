@@ -14,14 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 /**
- * Edit me
+ * Metric Resource Controller, this controller will control the model {@link Metric} and allow the API consumer
+ * to Modify the {@link Metric} resource the main business logic is located in {@link MetricService}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
 
 /**
- * Edit me
+ * Response DTO when there is a validation error from wrong data inputted from the Client used here
+ * {@link net.bdavies.metrics.configuration.ConstraintViolationExceptionHandler}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

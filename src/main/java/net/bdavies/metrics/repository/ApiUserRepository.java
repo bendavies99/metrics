@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Edit me
+ * Repository for {@link ApiUser}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

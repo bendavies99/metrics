@@ -14,7 +14,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Edit me
+ * A service to check whether a {@link HttpServletRequest} contains the correct information to
+ * authenticate a client
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

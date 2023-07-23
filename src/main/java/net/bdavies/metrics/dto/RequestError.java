@@ -6,12 +6,11 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 /**
- * Edit me
+ * Response DTO when there is an error from the server
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0
  */
-
 @Data
 @Builder
 @Jacksonized

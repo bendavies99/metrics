@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 /**
- * Edit me
+ * A Spring Web Filter to intercept a request to ensure the client is authenticated using an API Key
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

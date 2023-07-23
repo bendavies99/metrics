@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Edit me
+ * The service handling the business logic for the {@link net.bdavies.metrics.controller.MetricController}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

@@ -11,12 +11,11 @@ import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Edit me
+ * Entity for an API User that will need to be authenticated on REST request using the API Key
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0
  */
-
 @Entity
 @Data
 @Builder

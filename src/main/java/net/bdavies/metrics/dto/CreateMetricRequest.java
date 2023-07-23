@@ -9,7 +9,8 @@ import lombok.extern.jackson.Jacksonized;
 import java.time.Instant;
 
 /**
- * Edit me
+ * Request DTO for creating a new {@link net.bdavies.metrics.model.Metric} with added validation to
+ * ensure the client enters the correct information
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

@@ -25,8 +25,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Edit me
- *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0
  */

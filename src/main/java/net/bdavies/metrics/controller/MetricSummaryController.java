@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Edit me
+ * A controller for getting a {@link MetricSummary} of a particular Metric
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

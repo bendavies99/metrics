@@ -8,6 +8,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
+/**
+ * Metrics Application Entry Point
+ *
+ * @author me@bdavies (Ben Davies)
+ * @since 1.0.0
+ */
 @SpringBootApplication
 @Slf4j
 public class MetricsApplication {

@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Edit me
+ * Exception Handler for Handling Validation Exceptions from the Controller Method Parameters for the Request Body
+ * there is another handler which is handled by Spring
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

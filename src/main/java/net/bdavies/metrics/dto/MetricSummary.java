@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 /**
- * Edit me
+ * Response DTO for the {@link net.bdavies.metrics.controller.MetricSummaryController}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

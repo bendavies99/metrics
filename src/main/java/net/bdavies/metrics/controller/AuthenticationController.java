@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Edit me
+ * Controller for Authentication it uses the model {@link ApiUser}
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

@@ -21,8 +21,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 /**
- * Edit me
- *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0
  */

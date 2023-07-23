@@ -12,7 +12,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * Edit me
+ * Configuration for Spring Security this will disable several defaults such as:
+ *  - Form Login
+ *  - Http Basic Auth
+ * <p>
+ * Then Setup Stateless Authentication because our Application is Stateless it will use
+ * the {@link AuthenticationFilter} to ensure that the client is authenticated on request
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

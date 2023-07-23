@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.extern.jackson.Jacksonized;
 
 /**
- * Edit me
+ * Request DTO for retrieving a list of {@link net.bdavies.metrics.model.Metric}s from the system
  *
  * @author me@bdavies (Ben Davies)
  * @since 1.0.0

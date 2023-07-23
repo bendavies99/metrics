@@ -22,13 +22,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "metric", uniqueConstraints = @UniqueConstraint(columnNames = {"system", "name", "date"}))
+@Table(name = "metric", uniqueConstraints = @UniqueConstraint(columnNames = {"system_value", "name", "date_value"}))
 public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "system_value")
     private String system;
     private String name;
+    @Column(name = "date_value")
     private int date;
     @Column(name = "metric_value")
     private int value;

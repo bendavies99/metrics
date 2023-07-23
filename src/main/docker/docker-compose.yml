@@ -1,0 +1,38 @@
+version: '2.8'
+
+volumes:
+  db-data:
+
+networks:
+  metrics:
+
+services:
+  db:
+    container_name: db
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '03TTk3nUO2JHzjoNqI3Lw3hdXTNdD6Sl'
+      MYSQL_PASSWORD: 'N1jNXjlCyoe8wC2g'
+      MYSQL_USER: 'dbadmin'
+      MYSQL_DATABASE: 'metrics'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - metrics
+  metrics:
+    container_name: metrics
+    image: bendavies99/metrics:latest
+    restart: always
+    environment:
+      spring.datasource.driver-class-name: 'com.mysql.cj.jdbc.Driver'
+      spring.datasource.url: 'jdbc:mysql://db/metrics'
+      spring.datasource.username: 'dbadmin'
+      spring.datasource.password: 'N1jNXjlCyoe8wC2g'
+      spring.jpa.hibernate.ddl-auto: 'update'
+    ports:
+      - "8080:8080"
+    networks:
+      - metrics
